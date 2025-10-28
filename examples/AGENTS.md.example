@@ -1,0 +1,163 @@
+# AGENTS.md Example Template
+
+This is a sample `AGENTS.md` file that you can use as a starting point for your own projects.
+
+## 🎯 Project Overview
+
+**Project Name**: [Your Project Name]  
+**Type**: [Web App / CLI Tool / Library / etc.]  
+**Tech Stack**: [Languages, Frameworks, Tools]
+
+Brief description of what your project does and its main purpose.
+
+## 🚀 Setup Commands
+
+```bash
+# Clone and setup
+git clone [your-repo-url]
+cd [project-name]
+
+# Install dependencies
+npm install
+# or
+pip install -r requirements.txt
+# or
+cargo build
+
+# Run development server
+npm run dev
+# or
+python manage.py runserver
+# or
+cargo run
+
+# Run tests
+npm test
+# or
+pytest
+# or
+cargo test
+```
+
+## 🏗️ Project Structure
+
+```
+/
+├── src/                # Source code
+├── tests/              # Test files
+├── docs/               # Documentation
+├── .github/            # GitHub configs
+└── README.md           # Project overview
+```
+
+## 💻 Development Guidelines
+
+### Code Style
+- [Your style preferences]
+- [Formatting rules]
+- [Naming conventions]
+
+### Example
+```javascript
+// Your code style example
+const processData = async (data) => {
+  // Implementation
+};
+```
+
+## 🧪 Testing Instructions
+
+### Running Tests
+```bash
+# Run all tests
+npm test
+
+# Run specific test
+npm test -- path/to/test.js
+
+# Run with coverage
+npm run test:coverage
+```
+
+### Test Requirements
+- Minimum coverage: 80%
+- All new features must have tests
+- Test edge cases and error handling
+
+## 📝 Documentation Standards
+
+- Document all public APIs
+- Include usage examples
+- Keep README updated
+- Add inline comments for complex logic
+
+## 🔄 Pull Request Guidelines
+
+### PR Title Format
+```
+[Component] Brief description
+
+Examples:
+[Auth] Add OAuth login
+[API] Fix user endpoint validation
+[Docs] Update setup guide
+```
+
+### PR Checklist
+- [ ] Tests pass
+- [ ] Code follows style guide
+- [ ] Documentation updated
+- [ ] No breaking changes (or documented)
+- [ ] Commits are clean and descriptive
+
+## 🐛 Issue Guidelines
+
+### Bug Reports
+Include:
+- Description of the issue
+- Steps to reproduce
+- Expected vs actual behavior
+- Environment details
+- Error logs/screenshots
+
+### Feature Requests
+Include:
+- Problem statement
+- Proposed solution
+- Alternative solutions
+- Acceptance criteria
+
+## 🔒 Security Considerations
+
+- Never commit secrets or API keys
+- Use environment variables for sensitive data
+- Validate all user input
+- Keep dependencies updated
+
+## 🤖 Agent-Specific Instructions
+
+### Code Review Tasks
+Agents should check:
+- Code quality and style
+- Potential bugs
+- Performance issues
+- Security concerns
+- Test coverage
+
+### Implementation Tasks
+When implementing features:
+1. Read related issues/PRs
+2. Follow existing patterns
+3. Write tests
+4. Update documentation
+5. Create clear PR
+
+## 📚 Additional Resources
+
+- [Link to your docs]
+- [Link to API reference]
+- [Link to contributing guide]
+
+---
+
+**Tip**: Customize this template for your project's specific needs. The more context you provide, the better AI agents can assist you!

@@ -14,40 +14,345 @@
 ## 0. Ficha del proyecto
 
 ### **0.1. Tu nombre completo:**
+JGM (Jorge - nombre completo a completar)
 
 ### **0.2. Nombre del proyecto:**
+**RepoAgents** - AI Agent Integration Template
 
 ### **0.3. Descripción breve del proyecto:**
+RepoAgents es una plantilla de repositorio que transforma cualquier proyecto en un equipo completo de desarrollo mediante la integración de múltiples agentes de IA. Permite a desarrolladores individuales trabajar con diferentes roles y perfiles de agentes (GitHub Copilot, Gemini CLI, Claude, Jules, OpenCode, etc.) a través de comunicación asíncrona en GitHub Issues y Pull Requests, utilizando el estándar AGENTS.md como configuración central.
 
 ### **0.4. URL del proyecto:**
-
-> Puede ser pública o privada, en cuyo caso deberás compartir los accesos de manera segura. Puedes enviarlos a [alvaro@lidr.co](mailto:alvaro@lidr.co) usando algún servicio como [onetimesecret](https://onetimesecret.com/).
+Proyecto educativo (Proyecto Final AI4Devs). https://github.com/jorge-septeo/AI4Devs-finalproject
 
 ### 0.5. URL o archivo comprimido del repositorio
+**GitHub Repository**: https://github.com/jorge-septeo/AI4Devs-finalproject
 
-> Puedes tenerlo alojado en público o en privado, en cuyo caso deberás compartir los accesos de manera segura. Puedes enviarlos a [alvaro@lidr.co](mailto:alvaro@lidr.co) usando algún servicio como [onetimesecret](https://onetimesecret.com/). También puedes compartir por correo un archivo zip con el contenido
+> **Nota**: El repositorio es privado con fines educativos. El acceso puede compartirse de forma segura mediante invitación de GitHub o mediante el servicio [onetimesecret](https://onetimesecret.com/) si es necesario para evaluación.
 
 
 ---
 
 ## 1. Descripción general del producto
 
-> Describe en detalle los siguientes aspectos del producto:
-
 ### **1.1. Objetivo:**
 
-> Propósito del producto. Qué valor aporta, qué soluciona, y para quién.
+**RepoAgents** tiene como propósito facilitar el acceso a equipos de desarrollo completos mediante inteligencia artificial. 
+
+**Problema que soluciona:**
+- Los desarrolladores individuales a menudo necesitan cumplir múltiples roles: desarrollador, revisor de código, arquitecto, tester, documentador, etc.
+- La colaboración asíncrona con IA puede ser caótica sin una estructura clara
+- Cada proveedor de agentes IA tiene su propia configuración y formato
+- No existe un estándar claro para instruir a múltiples agentes en un mismo proyecto
+
+**Valor que aporta:**
+- **Plantilla lista para usar**: Configuraciones pre-establecidas para 7+ agentes IA diferentes
+- **Estándar unificado**: Utiliza AGENTS.md como punto central de configuración
+- **Automatización GitHub**: Workflows para code review, testing y documentación automáticos
+- **Educacional**: Ejemplos claros de cómo usar cada agente y cuándo
+- **Flexible**: Usa solo los agentes que necesites, ignora el resto
+
+**Para quién:**
+- Desarrolladores individuales que quieren aumentar su productividad
+- Equipos pequeños que quieren experimentar con IA en desarrollo
+- Estudiantes aprendiendo sobre desarrollo asistido por IA (como este proyecto educativo)
+- Proyectos que quieren facilitar contribuciones con IA
+- Cualquiera interesado en el estándar AGENTS.md
 
 ### **1.2. Características y funcionalidades principales:**
 
-> Enumera y describe las características y funcionalidades específicas que tiene el producto para satisfacer las necesidades identificadas.
+#### 1. **Archivo AGENTS.md Central**
+- Configuración unificada que todos los agentes pueden leer
+- Incluye guías de código, testing, documentación y PRs
+- Formato Markdown estándar y extensible
+- Compatible con el estándar https://agents.md/
+
+#### 2. **Configuraciones Multi-Agente**
+Incluye configuraciones específicas para:
+- **GitHub Copilot**: `.github/copilot-instructions.md` para sugerencias contextuales
+- **Gemini CLI**: `agents/gemini/.gemini/settings.json` para análisis y documentación
+- **Claude**: `agents/claude/claude-config.md` para code review profundo
+- **OpenCode**: `agents/opencode/opencode-rules.md` para calidad de código
+- **Jules**: `agents/jules/jules-config.md` para implementación full-stack
+- Preparado para Codex, Factory y otros agentes
+
+#### 3. **GitHub Actions Workflows**
+- **agent-code-review.yml**: Review automático de PRs con métricas
+- **agent-testing.yml**: Validación de tests y configuraciones
+- Reportes automáticos en Pull Requests
+- Validación de cobertura de código
+
+#### 4. **Templates de Issues**
+- Template estructurado para feature requests
+- Campos específicos para que agentes procesen las peticiones
+- Labels automáticos para organización
+- Acceptance criteria predefinidos
+
+#### 5. **Documentación Completa**
+- **Setup Guide**: Guía paso a paso para configurar cada agente
+- **Agent Comparison**: Matriz comparativa de capacidades
+- **Examples**: Ejemplos de AGENTS.md para diferentes proyectos
+- Mejores prácticas para cada agente
+
+#### 6. **Herramientas de Desarrollo**
+- ESLint y Prettier configurados
+- Jest para testing
+- TypeScript con modo estricto
+- Scripts npm para validación automática
 
 ### **1.3. Diseño y experiencia de usuario:**
 
-> Proporciona imágenes y/o videotutorial mostrando la experiencia del usuario desde que aterriza en la aplicación, pasando por todas las funcionalidades principales.
+**Flujo de trabajo principal:**
+
+```
+1. Developer clona/usa template
+   ↓
+2. Personaliza AGENTS.md para su proyecto
+   ↓
+3. Elige qué agentes usar
+   ↓
+4. Crea issues para tareas
+   ↓
+5. Menciona agentes (@claude, @jules)
+   ↓
+6. Agentes responden/implementan
+   ↓
+7. GitHub Actions validan cambios
+   ↓
+8. Merge automatizado o manual
+```
+
+**Interfaz de usuario:**
+
+El proyecto es principalmente una plantilla de repositorio, por lo que la "interfaz" es:
+- **GitHub Issues**: Para crear tareas y comunicarse con agentes
+- **GitHub Pull Requests**: Para reviews automáticos y manuales
+- **IDE (VS Code)**: Para desarrollo con Copilot y otros agentes
+- **Terminal**: Para comandos de Gemini CLI y otros CLIs
+- **GitHub Actions**: Para ver resultados de automatizaciones
+
+**Capturas de flujo** (ejemplo conceptual):
+
+```
+┌─────────────────────────────────────────┐
+│  1. Create Issue with Feature Request  │
+│  Template auto-fills structure         │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  2. Agent (@jules) analyzes and plans   │
+│  Posts implementation plan as comment   │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  3. Agent creates PR with changes       │
+│  GitHub Actions auto-review triggers    │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  4. Review bot comments on PR           │
+│  Coverage, lint, test results shown     │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  5. Developer/agent addresses feedback  │
+│  Uses Copilot for quick fixes           │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  6. Final validation passes → Merge!    │
+└─────────────────────────────────────────┘
+```
 
 ### **1.4. Instrucciones de instalación:**
-> Documenta de manera precisa las instrucciones para instalar y poner en marcha el proyecto en local (librerías, backend, frontend, servidor, base de datos, migraciones y semillas de datos, etc.)
+
+#### **Requisitos previos:**
+- **Git**: v2.x o superior
+- **Node.js**: v18.x o superior
+- **npm**: v9.x o superior
+- **Cuenta de GitHub**: Para usar como template
+- **Acceso a al menos un agente IA**: Copilot, Claude, Gemini, etc.
+
+#### **Opción 1: Usar como Template (Recomendado)**
+
+```bash
+# 1. Si tienes acceso al repositorio, puedes usarlo como template
+#    o clonar la estructura para tu propio proyecto
+
+# 2. Clona el repositorio (requiere acceso)
+git clone https://github.com/jorge-septeo/AI4Devs-finalproject.git
+cd AI4Devs-finalproject
+
+# 3. Instala dependencias
+npm install
+
+# 4. Verifica la instalación
+npm test
+```
+
+#### **Opción 2: Clonar directamente**
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/jorge-septeo/AI4Devs-finalproject.git
+cd AI4Devs-finalproject
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Ejecutar tests para verificar
+npm test
+
+# 4. Validar configuraciones de agentes
+npm run validate
+```
+
+#### **Configuración de Agentes:**
+
+##### **GitHub Copilot** (Opcional - requiere suscripción)
+```bash
+# 1. Instala VS Code
+# 2. Instala extensión GitHub Copilot
+# 3. Inicia sesión con tu cuenta GitHub
+# 4. El archivo .github/copilot-instructions.md se detectará automáticamente
+```
+
+##### **Google Gemini CLI** (Opcional - tiene tier gratuito)
+```bash
+# 1. Instala Gemini CLI
+npm install -g @google/generative-ai-cli
+
+# 2. Configura tu API key
+export GEMINI_API_KEY="tu-api-key-aqui"
+
+# 3. Agrega a tu shell profile
+echo 'export GEMINI_API_KEY="tu-api-key"' >> ~/.zshrc
+
+# 4. Prueba
+gemini "Hola, revisa el AGENTS.md"
+```
+
+##### **Claude** (Opcional - API o claude.ai)
+```bash
+# Opción A: Via claude.ai
+# 1. Ve a https://claude.ai
+# 2. Sube archivos del proyecto
+# 3. Referencia: "Sigue las guías en agents/claude/claude-config.md"
+
+# Opción B: Via API
+export CLAUDE_API_KEY="tu-api-key-aqui"
+```
+
+##### **Otros Agentes**
+```bash
+# OpenCode, Jules, Factory: Consulta docs/setup-guide.md
+# para instrucciones detalladas de cada agente
+```
+
+#### **Estructura del Proyecto:**
+
+```
+proyecto/
+├── AGENTS.md                       # ⭐ Configuración principal
+├── .github/
+│   ├── copilot-instructions.md     # Config Copilot
+│   ├── workflows/                  # GitHub Actions
+│   └── ISSUE_TEMPLATE/             # Templates issues
+├── agents/                         # Configs específicas
+│   ├── gemini/
+│   ├── claude/
+│   ├── opencode/
+│   └── jules/
+├── docs/                           # Documentación
+│   ├── setup-guide.md
+│   └── agent-comparison.md
+├── examples/                       # Ejemplos
+├── package.json                    # Dependencias Node
+└── README.md                       # Este archivo
+```
+
+#### **Comandos Disponibles:**
+
+```bash
+# Testing
+npm test                    # Ejecutar tests
+npm run test:watch          # Tests en modo watch
+npm run test:coverage       # Tests con coverage
+
+# Linting
+npm run lint                # Verificar código
+npm run lint:fix            # Arreglar problemas automáticamente
+
+# Formateo
+npm run format              # Formatear código
+npm run format:check        # Verificar formato
+
+# Validación completa
+npm run validate            # Lint + Format + Tests
+
+# Documentación
+npm run docs                # Generar docs API
+```
+
+#### **Verificación de Instalación:**
+
+```bash
+# 1. Tests pasan
+npm test
+# ✅ Debería mostrar: Tests: X passed
+
+# 2. Lint pasa
+npm run lint
+# ✅ Sin errores
+
+# 3. Validación de agentes
+npm run validate
+# ✅ Todas las configuraciones válidas
+```
+
+#### **Personalización Inicial:**
+
+1. **Actualiza AGENTS.md** con información de tu proyecto:
+   ```bash
+   # Edita las secciones:
+   # - Project Overview
+   # - Setup Commands
+   # - Project Structure
+   ```
+
+2. **Elige tus agentes**:
+   ```bash
+   # Elimina carpetas de agentes que no uses
+   rm -rf agents/jules  # Por ejemplo
+   ```
+
+3. **Actualiza package.json**:
+   ```bash
+   # Cambia nombre, descripción, autor, etc.
+   ```
+
+4. **Configura GitHub Actions**:
+   ```bash
+   # Ve a Settings > Actions en GitHub
+   # Habilita workflows
+   ```
+
+5. **Agrega secrets** (si usas APIs):
+   ```bash
+   # Settings > Secrets and variables > Actions
+   # Agrega: GEMINI_API_KEY, CLAUDE_API_KEY, etc.
+   ```
+
+#### **¡Listo!** 🎉
+
+Ahora puedes:
+- Crear issues con el template
+- Mencionar agentes en comentarios
+- Abrir PRs que serán auto-reviewed
+- Usar Copilot mientras codeas
+- Ejecutar `gemini "comando"` para análisis
+
+Para más detalles, consulta `docs/setup-guide.md`
 
 ---
 

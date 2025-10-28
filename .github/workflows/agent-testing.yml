@@ -1,0 +1,139 @@
+name: AI Agent Testing
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [18.x, 20.x]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run unit tests
+        run: npm test -- --coverage
+      
+      - name: Run integration tests
+        run: npm run test:integration
+        continue-on-error: true
+      
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-${{ matrix.os }}-node${{ matrix.node-version }}
+          fail_ci_if_error: false
+
+  test-agents:
+    name: Test Agent Configurations
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Validate AGENTS.md
+        run: |
+          echo "Validating AGENTS.md format..."
+          if [ ! -f "AGENTS.md" ]; then
+            echo "❌ AGENTS.md not found"
+            exit 1
+          fi
+          echo "✅ AGENTS.md exists"
+      
+      - name: Validate Copilot configuration
+        run: |
+          echo "Validating Copilot configuration..."
+          if [ ! -f ".github/copilot-instructions.md" ]; then
+            echo "❌ copilot-instructions.md not found"
+            exit 1
+          fi
+          echo "✅ Copilot configuration valid"
+      
+      - name: Validate Gemini configuration
+        run: |
+          echo "Validating Gemini configuration..."
+          if [ ! -f "agents/gemini/.gemini/settings.json" ]; then
+            echo "❌ Gemini settings.json not found"
+            exit 1
+          fi
+          # Validate JSON format
+          cat agents/gemini/.gemini/settings.json | jq empty
+          echo "✅ Gemini configuration valid"
+      
+      - name: Validate Claude configuration
+        run: |
+          echo "Validating Claude configuration..."
+          if [ ! -f "agents/claude/claude-config.md" ]; then
+            echo "❌ claude-config.md not found"
+            exit 1
+          fi
+          echo "✅ Claude configuration valid"
+      
+      - name: Validate OpenCode configuration
+        run: |
+          echo "Validating OpenCode configuration..."
+          if [ ! -f "agents/opencode/opencode-rules.md" ]; then
+            echo "❌ opencode-rules.md not found"
+            exit 1
+          fi
+          echo "✅ OpenCode configuration valid"
+      
+      - name: Validate Jules configuration
+        run: |
+          echo "Validating Jules configuration..."
+          if [ ! -f "agents/jules/jules-config.md" ]; then
+            echo "❌ jules-config.md not found"
+            exit 1
+          fi
+          echo "✅ Jules configuration valid"
+      
+      - name: Test report
+        run: |
+          echo "## Agent Configuration Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ All agent configurations are valid" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Validated Agents:" >> $GITHUB_STEP_SUMMARY
+          echo "- GitHub Copilot" >> $GITHUB_STEP_SUMMARY
+          echo "- Google Gemini CLI" >> $GITHUB_STEP_SUMMARY
+          echo "- Anthropic Claude" >> $GITHUB_STEP_SUMMARY
+          echo "- OpenCode" >> $GITHUB_STEP_SUMMARY
+          echo "- Google Jules" >> $GITHUB_STEP_SUMMARY

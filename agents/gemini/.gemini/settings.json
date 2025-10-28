@@ -1,0 +1,27 @@
+{
+  "contextFileName": "AGENTS.md",
+  "model": "gemini-2.0-flash-exp",
+  "temperature": 0.7,
+  "maxTokens": 8192,
+  "codeStyle": {
+    "language": "typescript",
+    "framework": "node",
+    "testFramework": "jest",
+    "styleGuide": "airbnb"
+  },
+  "features": {
+    "codeReview": true,
+    "testGeneration": true,
+    "documentation": true,
+    "refactoring": true
+  },
+  "rules": [
+    "Always read AGENTS.md before starting any task",
+    "Follow the established code style and conventions",
+    "Write tests for new features",
+    "Update documentation when changing functionality",
+    "Use descriptive commit messages"
+  ],
+  "projectType": "template-repository",
+  "description": "RepoAgents - AI Agent Integration Template"
+}
