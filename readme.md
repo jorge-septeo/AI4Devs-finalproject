@@ -14,7 +14,7 @@
 ## 0. Ficha del proyecto
 
 ### **0.1. Tu nombre completo:**
-JGM (Jorge - nombre completo a completar)
+JGM
 
 ### **0.2. Nombre del proyecto:**
 **RepoAgents** - AI Agent Integration Template
